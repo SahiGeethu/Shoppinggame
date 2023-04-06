@@ -1,0 +1,46 @@
+﻿@model ShoppingGame.Models.Products
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Checkout</h2>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+</style>
+
+@for (int i = 0; i < Model.dtProducts.Tables.Count; i++)
+{
+    <table>
+        <tr>
+            <td>SKU</td>
+            <td>Qty.</td>
+            <td>Price</td>
+        </tr>
+        @for (int j = 0; j < Model.dtProducts.Tables[i].Rows.Count; j++)
+        {
+
+
+            <tr>
+                <td>@Model.dtProducts.Tables[i].Rows[j]["SKU"]</td>
+                <td>@Model.dtProducts.Tables[i].Rows[j]["Qty"]</td>
+                <td>@Model.dtProducts.Tables[i].Rows[j]["Price"]</td>
+            </tr>
+
+        }
+        <tr>
+            <td colspan="3" align="right">
+                @Model.dtProducts.Tables[i].Rows[0]["Total"]
+            </td>
+        </tr>
+    </table>
+    <hr />
+}
+
